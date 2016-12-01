@@ -1,6 +1,7 @@
 require 'facebook/messenger'
 require 'net/http'
 require 'json'
+require 'open-uri'
 
 include Facebook::Messenger
 
@@ -30,7 +31,9 @@ Bot.on :message do |message|
   	end
   when /wear/i
   	# access weather API
+  	weather = open('api.openweathermap.org/data/2.5/weather?zip=#{user_zipcode},us')
   	# make clothing recommendation
+  	message.reply(text: "#{weather.name}")
   else
   	message.reply(text: 'No idea what you\'re saying')
   end
