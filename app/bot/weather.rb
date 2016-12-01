@@ -37,6 +37,10 @@ Bot.on :message do |message|
   				text: "Sorry we didn't get your zipcode. Try typing: zipcode *your zipcode*"
   			}
   		)
+  	end
+  when /wear/i
+  	# access weather API
+  	# make clothing recommendation
   else
   	message.reply(text: 'No idea what you\'re saying')
   end
