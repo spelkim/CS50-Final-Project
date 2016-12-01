@@ -27,7 +27,7 @@ Bot.on :message do |message|
 		Bot.deliver(
 			recipient: message.sender,
 			message: {
-				text: 'Your zipcode, #{user_zipcode}, has been updated!')
+				text: "Your zipcode, #{user_zipcode}, has been updated!"
 			}
 		)
   	else
