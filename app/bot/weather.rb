@@ -24,19 +24,9 @@ Bot.on :message do |message|
   	if zipcode.length == 2 and zipcode[1].length == 5
 		user_zipcode = zipcode[1]
 		# store zipcode in user model
-		Bot.deliver(
-			recipient: message.sender,
-			message: {
-				text: "Your zipcode, #{user_zipcode}, has been updated!"
-			}
-		)
+		message.reply(text: "Your zipcode, #{user_zipcode}, has been updated!")
   	else
-  		Bot.deliver(
-  			recipient: message.sender,
-  			message: {
-  				text: "Sorry we didn't get your zipcode. Try typing: zipcode *your zipcode*"
-  			}
-  		)
+  		message.reply(text: "Sorry we didn't get your zipcode. Try typing: zipcode *your zipcode*")
   	end
   when /wear/i
   	# access weather API
