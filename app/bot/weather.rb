@@ -19,6 +19,24 @@ Bot.on :message do |message|
   	message.reply(text: 'Hello, human!')
   when /help/i
   	message.reply(text: 'We\'re working on it')
+  when /zipcode/i
+  	zipcode = message.text.split
+  	if zipcode.length == 2 and zipcode[1].length == 5
+		user_zipcode = zipcode[1]
+		# store zipcode in user model
+		Bot.deliver(
+			recipient: message.sender,
+			message: {
+				text: 'Your zipcode, #{user_zipcode}, has been updated!')
+			}
+		)
+  	else
+  		Bot.deliver(
+  			recipient: message.sender,
+  			message: {
+  				text: "Sorry we didn't get your zipcode. Try typing: zipcode *your zipcode*"
+  			}
+  		)
   else
   	message.reply(text: 'No idea what you\'re saying')
   end
