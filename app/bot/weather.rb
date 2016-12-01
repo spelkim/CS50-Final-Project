@@ -13,6 +13,8 @@ Bot.on :message do |message|
   message.attachments # => [ { 'type' => 'image', 'payload' => { 'url' => 'https://www.example.com/1.jpg' } } ]
 
   case message.text
+  when /get started/i
+  	message.reply(text: 'Welcome to Weather the Weather! We\'ll give you clothing recommendations based on the weather in your current location.')
   when /hello/i
   	message.reply(text: 'Hello, human!')
   when /help/i
@@ -22,9 +24,9 @@ Bot.on :message do |message|
   end
 end
 
-Bot.on :postback do |postback|
-  case postback.payload
-  when /WELCOME_NEW_USER/i
-  	message.reply(text: 'Welcome to Weather the Weather- further instructions eventually')
-  end
- end
+# Bot.on :postback do |postback|
+#   case postback.payload
+#   when /WELCOME_NEW_USER/i
+#   	message.reply(text: 'Welcome to Weather the Weather! We\'ll give you clothing recommendations based on the weather in your current location.')
+#   end
+#  end
