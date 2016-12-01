@@ -21,3 +21,10 @@ Bot.on :message do |message|
   	message.reply(text: 'No idea what you\'re saying')
   end
 end
+
+Bot.on :postback do |postback|
+  case postback.payload
+  when /WELCOME_NEW_USER/i
+  	message.reply(text: 'Welcome to Weather the Weather- further instructions eventually')
+  end
+ end
