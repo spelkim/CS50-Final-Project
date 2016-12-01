@@ -1,7 +1,7 @@
 require 'facebook/messenger'
 require 'net/http'
 require 'json'
-require 'open-uri'
+#require 'open-uri'
 
 include Facebook::Messenger
 
