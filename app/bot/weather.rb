@@ -10,5 +10,12 @@ Bot.on :message do |message|
   message.text        # => 'Hello, bot!'
   message.attachments # => [ { 'type' => 'image', 'payload' => { 'url' => 'https://www.example.com/1.jpg' } } ]
 
-  message.reply(text: 'Hello, human!')
+  case message.text
+  when /hello/i
+  	message.reply(text: 'Hello, human!')
+  when /help/i
+  	message.reply(text: 'We\'re working on it')
+  else
+  	message.reply(text: 'No idea what you\'re saying')
+  end
 end
