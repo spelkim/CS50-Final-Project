@@ -1,6 +1,6 @@
 require 'facebook/messenger'
 require 'net/http'
-requre 'json'
+require 'json'
 
 include Facebook::Messenger
 
