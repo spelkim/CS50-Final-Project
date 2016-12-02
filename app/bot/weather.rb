@@ -37,7 +37,7 @@ Bot.on :message do |message|
   	weather = JSON.parse(response)
   	# make clothing recommendation
   	#message.reply(text: "#{weather[name]}")
-  	message.reply(text: "Got weather!")
+  	message.reply(text: "#{weather}")
   else
   	message.reply(text: 'No idea what you\'re saying')
   end
