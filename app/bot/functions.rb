@@ -4,7 +4,7 @@ def create_user(message)
 	# 	User.find_by(facebook_id: user_id).destroy
 	# end
 
-	User.create(facebook_id: user_id)
+	user = User.create(facebook_id: user_id, zipcode: , preference: )
 end
 
 # def update_zipcode(message, user_zipcode)
