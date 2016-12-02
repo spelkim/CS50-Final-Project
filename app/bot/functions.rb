@@ -5,7 +5,7 @@ def create_user(message)
 	# end
 
 	user = User.create(facebook_id: user_id, zipcode: "02138", preference: "0")
-	message.reply(text: user)
+	message.reply(text: User.all)
 end
 
 # def update_zipcode(message, user_zipcode)
