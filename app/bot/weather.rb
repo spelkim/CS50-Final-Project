@@ -30,6 +30,7 @@ Bot.on :message do |message|
   	else
   		message.reply(text: "Sorry we didn't get your zipcode. Try typing: 'zipcode *your zipcode*' Example: zipcode 12345")
   	end
+  end
   when /preference/i
     preference = message.text.split
     if preference.length == 2 and preference[1].length == 1 and is_number(preference[1])
