@@ -20,7 +20,7 @@ def get_weather(message)
 	user_id = message.sender["id"]
 	user = User.find_by(facebook_id: user_id)
 	zip = user.zipcode
-	url = 'http://api.openweathermap.org/data/2.5/weather?zip=#{zip},us&appid=60a63f39a6b259fc6aa363e5f0879ddf'
+	url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zip + ',us&appid=60a63f39a6b259fc6aa363e5f0879ddf'
   	uri = URI(url)
   	response = Net::HTTP.get(uri)
   	weatherdata = JSON.parse(response)
