@@ -43,6 +43,8 @@ Bot.on :message do |message|
   	# access weather API
   	weather = get_weather(message)
   	# make clothing recommendation
+  	user_id = message.sender["id"]
+	user = User.find_by(facebook_id: user_id)
   	temperature = weather['main']['temp'] + (user.preference - 5)
     clouds = weather['clouds']['all']
     #snow = weather['snow']['3h']
