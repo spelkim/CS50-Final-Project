@@ -4,7 +4,7 @@ def create_user(message)
 	 	User.find_by(facebook_id: user_id).destroy
 	end
 
-	user = User.create(facebook_id: user_id, preference: "0")
+	user = User.create(facebook_id: user_id, preference: "5")
 	message.reply(text: "User created!")
 end
 
@@ -32,6 +32,7 @@ def update_preference(message)
 	user = User.find_by(facebook_id: user_id)
 	user.preference = user_preference
 	user.save
+	message.reply(text: "Your preference, #{user_preference}, has been updated!")
 end
 
 def is_number(string)

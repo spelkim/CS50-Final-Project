@@ -35,7 +35,7 @@ Bot.on :message do |message|
     if preference.length == 2 and preference[1].length == 1 and is_number(preference[1])
     user_preference = preference[1]
     # store preference in user model
-    message.reply(text: "Your preference, #{user_preference}, has been updated!")
+    updated_preference = update_preference(message)
     else
       message.reply(text: "Sorry we didn't get your preference. Try typing: preference *a number from 1 to 10* e.g. preference 6")
     end
