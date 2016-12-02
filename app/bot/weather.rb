@@ -26,7 +26,7 @@ Bot.on :message do |message|
   	if zipcode.length == 2 and zipcode[1].length == 5 and is_number(zipcode[1])
 		user_zipcode = zipcode[1]
 		# store zipcode in user model
-		# updated_zipcode = update_zipcode(message, user_zipcode)
+		updated_zipcode = update_zipcode(message, user_zipcode)
 		message.reply(text: "Zipcode updated")
   	else
   		message.reply(text: "Sorry we didn't get your zipcode. Try typing: zipcode *your zipcode*")
@@ -73,15 +73,15 @@ Bot.on :message do |message|
     end
 
     if temperature > 278
-    	message.reply(text: "shoes like sneakers")
+    	message.reply(text: "Shoes like sneakers")
     end
 
     if temperature <= 278 # or snow > 0
-    	message.reply(text: "winter boots")
+    	message.reply(text: "Winter boots")
     end 
 
-    if clouds < 5
-    	message.reply(text: "hat and sunglasses")
+    if temperature >= 294 and clouds < 5
+    	message.reply(text: "Hat and Sunglasses")
     end
 
     # if rain > 0
