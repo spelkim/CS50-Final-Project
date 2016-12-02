@@ -5,15 +5,16 @@ def create_user(message)
 	end
 
 	user = User.create(facebook_id: user_id, preference: "0")
-	message.reply(text: User.all)
+	message.reply(text: "User created!")
 end
 
-# def update_zipcode(message, user_zipcode)
-# 	user_id = message.sender["id"]
-# 	user = User.where(facebook_id: user_id)
-# 	user.zipcode = user_zipcode
-# 	user.save
-# end
+def update_zipcode(message, user_zipcode)
+	user_id = message.sender["id"]
+	user = User.where(facebook_id: user_id)
+	user.zipcode = user_zipcode
+	user.save
+	message.reply(text: "Your zipcode, #{user_zipcode}, has been updated!")
+end
 
 # def update_preference(message)
 # 	user_id = message.sender["id"]

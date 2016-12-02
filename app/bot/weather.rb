@@ -26,7 +26,7 @@ Bot.on :message do |message|
   	if zipcode.length == 2 and zipcode[1].length == 5
 		user_zipcode = zipcode[1]
 		# store zipcode in user model
-		message.reply(text: "Your zipcode, #{user_zipcode}, has been updated!")
+		updated_zipcode = update_zipcode(message, user_zipcode)
   	else
   		message.reply(text: "Sorry we didn't get your zipcode. Try typing: zipcode *your zipcode*")
   	end
