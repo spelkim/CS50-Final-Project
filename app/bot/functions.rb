@@ -27,7 +27,7 @@ def get_weather(message)
 return weatherdata
 end
 
-def update_preference(message)
+def update_preference(message, user_preference)
 	user_id = message.sender["id"]
 	user = User.find_by(facebook_id: user_id)
 	user.preference = user_preference
