@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  facebook_id: MyString
+  zipcode: MyString
+  preference: 1
+
+two:
+  facebook_id: MyString
+  zipcode: MyString
+  preference: 1

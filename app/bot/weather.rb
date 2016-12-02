@@ -1,7 +1,7 @@
 require 'facebook/messenger'
 require 'net/http'
 require 'json'
-#require 'open-uri'
+require 'functions'
 
 include Facebook::Messenger
 
@@ -15,6 +15,7 @@ Bot.on :message do |message|
 
   case message.text
   when /get started/i
+  	user = create_user(message)
   	message.reply(text: 'Welcome to Weather the Weather! We\'ll give you clothing recommendations based on the weather in your current location.')
   when /hello/i
   	message.reply(text: 'Hello, human!')

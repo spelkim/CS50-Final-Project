@@ -1,4 +1,22 @@
-#require 'open-uri'
+def create_user(message)
+	user_id = message.sender["id"]
+	if User.find_by(facebook_id: user_id)
+		User.find_by(facebook_id: user_id).destroy
+	end
 
-#weather = open('api.openweathermap.org/data/2.5/weather?zip=#{user_zipcode},us')
+	User.create(facebook_id: user_id)
+end
 
+def update_zipcode(message, user_zipcode)
+	user_id = message.sender["id"]
+	user = User.where(facebook_id: user_id)
+	user.zipcode = user_zipcode
+	user.save
+end
+
+# def update_preference(message)
+# 	user_id = message.sender["id"]
+# 	user = User.where(facebook_id: user_id)
+# 	user.preference = user_preference
+# 	user.save
+# end
