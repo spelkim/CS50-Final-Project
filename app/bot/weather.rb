@@ -30,16 +30,21 @@ Bot.on :message do |message|
   	else
   		message.reply(text: "Sorry we didn't get your zipcode. Try typing: 'zipcode *your zipcode*' Example: zipcode 12345")
   	end
+  when /preference/i
+    preference = message.text.split
+    if preference.length == 2 and preference[1].length == 1 and is_number(preference[1])
+    user_preference = preference[1]
+    # store preference in user model
+    message.reply(text: "Your preference, #{user_preference}, has been updated!")
+    else
+      message.reply(text: "Sorry we didn't get your preference. Try typing: preference *a number from 1 to 10* e.g. preference 6")
+    end
+  end
   when /wear/i
   	# access weather API
   	weather = get_weather(message)
-  	# url = 'http://api.openweathermap.org/data/2.5/weather?zip=02138,us&appid=60a63f39a6b259fc6aa363e5f0879ddf'
-  	# uri = URI(url)
-  	# response = Net::HTTP.get(uri)
-  	# weather = JSON.parse(response)
   	# make clothing recommendation
-  	# message.reply(text: "#{weather['main']['temp']}")
-  	temperature = weather['main']['temp']
+  	temperature = weather['main']['temp'] + (user.preference - 5)
     clouds = weather['clouds']['all']
     #snow = weather['snow']['3h']
     #rain = weather['rain']['3h']
