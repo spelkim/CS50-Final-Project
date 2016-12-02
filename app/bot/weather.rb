@@ -31,9 +31,9 @@ Bot.on :message do |message|
   	end
   when /wear/i
   	# access weather API
-  	# weather = open('http://api.openweathermap.org/data/2.5/weather?zip=#{user_zipcode},us')
+  	weather = open('http://api.openweathermap.org/data/2.5/weather?zip=#{user_zipcode},us&appid=60a63f39a6b259fc6aa363e5f0879ddf')
   	# make clothing recommendation
-  	# message.reply(text: "#{weather.name}")
+  	message.reply(text: "#{weather.name}")
   else
   	message.reply(text: 'No idea what you\'re saying')
   end
