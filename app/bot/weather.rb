@@ -34,9 +34,10 @@ Bot.on :message do |message|
   	url = 'http://api.openweathermap.org/data/2.5/weather?zip=02138,us&appid=60a63f39a6b259fc6aa363e5f0879ddf'
   	uri = URI(url)
   	response = Net::HTTP.get(uri)
-  	JSON.parse(response)
+  	weather = JSON.parse(response)
   	# make clothing recommendation
-  	message.reply(text: "#{response.name}")
+  	#message.reply(text: "#{weather[name]}")
+  	message.reply(text: "Got weather!")
   else
   	message.reply(text: 'No idea what you\'re saying')
   end
