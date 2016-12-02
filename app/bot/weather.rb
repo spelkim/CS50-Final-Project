@@ -37,7 +37,7 @@ Bot.on :message do |message|
     # store preference in user model
     updated_preference = update_preference(message, user_preference)
     else
-      message.reply(text: "Sorry we didn't get your preference. Try typing: preference *a number from 1 to 10* e.g. preference 6")
+      message.reply(text: "Sorry we didn't get your preference. Try typing: preference *a number from 0 to 9* e.g. preference 6")
     end
   when /wear/i
   	# access weather API

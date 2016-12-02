@@ -4,7 +4,7 @@ def create_user(message)
 	 	User.find_by(facebook_id: user_id).destroy
 	end
 
-	user = User.create(facebook_id: user_id, preference: "5")
+	user = User.create(facebook_id: user_id, preference: "4")
 	message.reply(text: "User created!")
 end
 
