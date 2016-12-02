@@ -29,14 +29,15 @@ Bot.on :message do |message|
 		updated_zipcode = update_zipcode(message, user_zipcode)
 		message.reply(text: "Zipcode updated")
   	else
-  		message.reply(text: "Sorry we didn't get your zipcode. Try typing: zipcode *your zipcode*")
+  		message.reply(text: "Sorry we didn't get your zipcode. Try typing: 'zipcode *your zipcode*' Example: zipcode 12345")
   	end
   when /wear/i
   	# access weather API
-  	url = 'http://api.openweathermap.org/data/2.5/weather?zip=02138,us&appid=60a63f39a6b259fc6aa363e5f0879ddf'
-  	uri = URI(url)
-  	response = Net::HTTP.get(uri)
-  	weather = JSON.parse(response)
+  	weather = get_weather(message)
+  	# url = 'http://api.openweathermap.org/data/2.5/weather?zip=02138,us&appid=60a63f39a6b259fc6aa363e5f0879ddf'
+  	# uri = URI(url)
+  	# response = Net::HTTP.get(uri)
+  	# weather = JSON.parse(response)
   	# make clothing recommendation
   	# message.reply(text: "#{weather['main']['temp']}")
   	temperature = weather['main']['temp']
