@@ -44,50 +44,50 @@ Bot.on :message do |message|
     snow = weather['snow']['3h']
     rain = weather['rain']['3h']
 
-  	if temperature >= 294 
-      message.reply(text: "T-Shirt")
+  	if temperature >= 294
+    	message.reply(text: "T-Shirt")
     end 
 
     if temperature >= 284 and temperature < 294
-      message.reply(text: "Long Sleeve Shirt")
+    	message.reply(text: "Long Sleeve Shirt")
     end
 
     if temperature >= 274 and temperature < 284
-      message.reply(text: "Hoodie with Shirt")
+    	message.reply(text: "Hoodie with Shirt")
     end
 
     if temperature < 274 or snow > 0
-      message.reply(text: "Coat")
+    	message.reply(text: "Coat")
     end
 
     if temperature < 270 or snow > 0
-      message.reply(text: "Gloves or Mittens")
+    	message.reply(text: "Gloves or Mittens")
     end
 
     if temperature >= 294
-      message.reply (text: "Shorts")
+    	message.reply(text: "Shorts")
     end
 
     if temperature < 294
-      message.reply (text: "Long Pants")
+    	message.reply(text: "Long Pants")
     end
 
     if temperature > 278
-      message.reply (text: "shoes like sneakers")
+    	message.reply(text: "shoes like sneakers")
     end
 
     if temperature <= 278 or snow > 0
-      message.reply (text: "winter boots")
+    	message.reply(text: "winter boots")
     end 
 
     if clouds < 5
-      message.reply (text: "hat and sunglasses")
+    	message.reply(text: "hat and sunglasses")
     end
 
     if rain > 0
-      message.reply (text: "raincoat, rainboots and maybe an umbrella")
+    	message.reply(text: "raincoat, rainboots and maybe an umbrella")
     end
-    
+
   else
   	message.reply(text: 'No idea what you\'re saying')
   end
