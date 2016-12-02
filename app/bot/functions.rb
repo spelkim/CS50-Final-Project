@@ -1,8 +1,8 @@
 def create_user(message)
 	user_id = message.sender["id"]
-	# if User.find_by(facebook_id: user_id)
-	# 	User.find_by(facebook_id: user_id).destroy
-	# end
+	if User.find_by(facebook_id: user_id)
+	 	User.find_by(facebook_id: user_id).destroy
+	end
 
 	user = User.create(facebook_id: user_id, zipcode: "02138", preference: "0")
 	message.reply(text: User.all)
