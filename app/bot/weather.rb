@@ -36,7 +36,7 @@ Bot.on :message do |message|
   	response = Net::HTTP.get(uri)
   	weather = JSON.parse(response)
   	# make clothing recommendation
-  	message.reply(text: "#{weather.weather.main}")
+  	message.reply(text: "#{weather['name']}")
   else
   	message.reply(text: 'No idea what you\'re saying')
   end
