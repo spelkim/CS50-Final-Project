@@ -10,10 +10,10 @@ end
 
 def update_zipcode(message, user_zipcode)
 	user_id = message.sender["id"]
-	user = User.where(facebook_id: user_id)
-	user.update_attribute(:zipcode, user_zipcode)
-	# user.zipcode = user_zipcode
-	# user.save
+	user = User.find_by(facebook_id: user_id)
+	#user.update_attribute(:zipcode, user_zipcode)
+	user.zipcode = user_zipcode
+	user.save
 	message.reply(text: "Your zipcode, #{user_zipcode}, has been updated!")
 end
 
