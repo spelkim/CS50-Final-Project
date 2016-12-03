@@ -16,11 +16,11 @@ Bot.on :message do |message|
   case message.text
   when /get started/i
   	user = create_user(message)
-  	message.reply(text: 'Welcome to Weather the Weather! We\'ll give you clothing recommendations based on the weather in your current location.')
+  	message.reply(text: "Welcome to Weather the Weather! We'll give you clothing recommendations based on the weather in your current location and your personal temperature preferences. Start by sending us your zipcode in the format: 'zipcode *your zipcode*' (ex: zipcode 12345). If you have any questions about usage, message 'help' for instructions.")
   when /hello/i
   	message.reply(text: 'Hello, human!')
   when /help/i
-  	message.reply(text: 'We\'re working on it')
+  	message.reply(text: "To update zipcode: 'zipcode *your zipcode*' (ex: zipcode 12345). To update preference: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 means you're usually average temperature, and 9 means you're usually very warm relative to other people (ex: preference 6).")
   when /zipcode/i
   	zipcode = message.text.split
   	if zipcode.length == 2 and zipcode[1].length == 5 and is_number(zipcode[1])
@@ -28,7 +28,7 @@ Bot.on :message do |message|
 		# store zipcode in user model
 		updated_zipcode = update_zipcode(message, user_zipcode)
   	else
-  		message.reply(text: "Sorry we didn't get your zipcode. Try typing: 'zipcode *your zipcode*' Example: zipcode 12345")
+  		message.reply(text: "Sorry we didn't get your zipcode. Try typing: 'zipcode *your zipcode*' (ex: zipcode 12345).")
   	end
   when /preference/i
     preference = message.text.split
@@ -37,7 +37,7 @@ Bot.on :message do |message|
     # store preference in user model
     updated_preference = update_preference(message, user_preference)
     else
-      message.reply(text: "Sorry we didn't get your preference. Try typing: preference *a number from 0 to 9* e.g. preference 6")
+      message.reply(text: "Sorry we didn't get your preference. Try typing: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 is neutral, and 9 means you're usually very warm (ex: preference 6).")
     end
   when /wear/i
   	# access weather API
@@ -79,11 +79,11 @@ Bot.on :message do |message|
     end
 
     if temperature > 278
-    	message.reply(text: "Shoes like sneakers")
+    	message.reply(text: "Shoes like Sneakers")
     end
 
     if temperature <= 278 # or snow > 0
-    	message.reply(text: "Winter boots")
+    	message.reply(text: "Winter Boots")
     end 
 
     if temperature >= 294 and clouds < 5
@@ -95,7 +95,7 @@ Bot.on :message do |message|
     # end
 
   else
-  	message.reply(text: 'No idea what you\'re saying')
+  	message.reply(text: "Sorry, we didn't understand that. Try messaging 'help' for usage instructions.")
   end
 end
 
