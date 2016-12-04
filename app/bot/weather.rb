@@ -45,10 +45,13 @@ Bot.on :message do |message|
   	# make clothing recommendation
   	user_id = message.sender["id"]
 	user = User.find_by(facebook_id: user_id)
+	location = weather['name']
   	temperature = weather['main']['temp'] + (user.preference - 5)
     clouds = weather['clouds']['all']
     #snow = weather['snow']['3h']
     #rain = weather['rain']['3h']
+
+    message.reply(text: "Based on the current weather in #{location}, you should wear:")
 
   	if temperature >= 294
     	message.reply(text: "T-Shirt")
