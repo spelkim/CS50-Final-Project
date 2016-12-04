@@ -57,19 +57,19 @@ Bot.on :message do |message|
     	message.reply(text: "T-Shirt")
     end 
 
-    if temperature >= 284 and temperature < 294
+    if temperature >= 287 and temperature < 294
     	message.reply(text: "Long Sleeve Shirt")
     end
 
-    if temperature >= 274 and temperature < 284
+    if temperature >= 281 and temperature < 287
     	message.reply(text: "Hoodie with Shirt")
     end
 
-    if temperature < 274 # or snow > 0
+    if temperature < 281 # or snow > 0
     	message.reply(text: "Coat")
     end
 
-    if temperature < 270 # or snow > 0
+    if temperature < 278 # or snow > 0
     	message.reply(text: "Gloves or Mittens")
     end
 
