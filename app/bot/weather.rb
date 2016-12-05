@@ -105,7 +105,7 @@ end
 Bot.on :postback do |postback|
 	case postback.payload
 	when /NEW_USER/i
-		user = create_user(message)
+		user = create_user(postback)
   		text = "Welcome to Weather the Weather! We'll give you clothing recommendations based on the weather in your current location. Start by sending us your zipcode in the format: 'zipcode *your zipcode*' (ex: zipcode 12345). If you have any questions about usage, message 'help' for instructions."
   		Bot.deliver(
       		recipient: postback.sender,
