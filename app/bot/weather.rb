@@ -102,9 +102,10 @@ Bot.on :message do |message|
   end
 end
 
-# Bot.on :postback do |postback|
-#   case postback.payload
-#   when /WELCOME_NEW_USER/i
-#   	message.reply(text: 'Welcome to Weather the Weather! We\'ll give you clothing recommendations based on the weather in your current location.')
-#   end
-#  end
+Bot.on :postback do |postback|
+	case postback.payload
+	when /NEW_USER/i
+		user = create_user(message)
+  		message.reply(text: "Welcome to Weather the Weather! We'll give you clothing recommendations based on the weather in your current location and your personal temperature preferences. Start by sending us your zipcode in the format: 'zipcode *your zipcode*' (ex: zipcode 12345). If you have any questions about usage, message 'help' for instructions.")
+  	end
+end
