@@ -106,6 +106,12 @@ Bot.on :postback do |postback|
 	case postback.payload
 	when /USER_DEFINED_PAYLOAD/i
 		user = create_user(message)
-  		message.reply(text: "Welcome to Weather the Weather! We'll give you clothing recommendations based on the weather in your current location and your personal temperature preferences. Start by sending us your zipcode in the format: 'zipcode *your zipcode*' (ex: zipcode 12345). If you have any questions about usage, message 'help' for instructions.")
+  		text = "Welcome to Weather the Weather! We'll give you clothing recommendations based on the weather in your current location and your personal temperature preferences. Start by sending us your zipcode in the format: 'zipcode *your zipcode*' (ex: zipcode 12345). If you have any questions about usage, message 'help' for instructions.")
+  		Bot.deliver(
+      		recipient: postback.sender,
+      		message: {
+        		text: text
+      		}
+    	) 
   	end
 end
