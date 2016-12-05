@@ -42,9 +42,10 @@ Bot.on :message do |message|
   when /wear/i
   	# access weather API
   	weather = get_weather(message)
-  	# make clothing recommendation
+  	# give recommendation based on current user
   	user_id = message.sender["id"]
 	user = User.find_by(facebook_id: user_id)
+	# get location, temperature, and clouds information
 	location = weather['name']
   	temperature = weather['main']['temp'] + (user.preference - 5)
     clouds = weather['clouds']['all']
@@ -106,13 +107,6 @@ Bot.on :postback do |postback|
 	case postback.payload
 	when /NEW_USER/i
 		user = create_user(postback)
-  		# text = "Welcome to Weather the Weather! We'll give you clothing recommendations based on the weather in your current location. Start by sending us your zipcode in the format: 'zipcode *your zipcode*' (ex: zipcode 12345). If you have any questions about usage, message 'help' for instructions."
   		postback.reply(text: "Welcome to Weather the Weather! We'll give you clothing recommendations based on the weather in your current location. Start by sending us your zipcode in the format: 'zipcode *your zipcode*' (ex: zipcode 12345). If you have any questions about usage, message 'help' for instructions.")
-  		# Bot.deliver(
-    #   		recipient: postback.sender,
-    #   		message: {
-    #     		text: text
-    #   		}
-    # 	) 
   	end
 end
