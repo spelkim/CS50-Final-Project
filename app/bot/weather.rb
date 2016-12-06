@@ -108,17 +108,17 @@ Bot.on :message do |message|
     	message.reply(text: "Shoes like Sneakers")
     end
 
-    if temperature <= 278 # or snow > 0
+    if temperature <= 278 # or condition == "Snow"
     	message.reply(text: "Winter Boots")
     end 
 
-    if temperature >= 294 and clouds < 5
+    if temperature >= 294 and clouds < 10
     	message.reply(text: "Hat and Sunglasses")
     end
 
-    # if rain > 0
-    # 	message.reply(text: "raincoat, rainboots and maybe an umbrella")
-    # end
+    if condition == "Rain"
+    	message.reply(text: "A Raincoat, Rainboots, and maybe an Umbrella")
+    end
 
   # if user does not provide valid input
   else
