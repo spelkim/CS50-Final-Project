@@ -28,7 +28,9 @@ Bot.on :message do |message|
   # if message includes the word "help"
   when /help/i
   	# reply to user with instructions for use
-  	message.reply(text: "To update zipcode: 'zipcode *your zipcode*' (ex: zipcode 12345). To update preference: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 means you're usually average temperature, and 9 means you're usually very warm relative to other people (ex: preference 6).")
+  	message.reply(text: "To request clothing recommendation based on current weather in your location: 'clothes' (ex: clothes) (make sure you set your zipcode first)")
+  	message.reply(text: "To update zipcode: 'zipcode *your zipcode*' (ex: zipcode 12345).")
+  	message.reply(text: "To update preference: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 means you're usually average temperature, and 9 means you're usually very warm relative to other people (ex: preference 6).")
   # if message includes the word "zipcode"
   when /zipcode/i
   	# split message into individual words
@@ -54,19 +56,21 @@ Bot.on :message do |message|
     else
       message.reply(text: "Sorry we didn't get your preference. Try typing: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 is neutral, and 9 means you're usually very warm (ex: preference 6).")
     end
-  # if message includes the word "wear"
-  when /wear/i
+  # if message includes the word "clothes"
+  when /clothes/i
   	# access weather API
   	weather = get_weather(message)
   	# give recommendation based on current user
   	user_id = message.sender["id"]
 	user = User.find_by(facebook_id: user_id)
-	# get location, temperature, and clouds information
+	# get location, temperature, clouds, and condition information
 	location = weather['name']
   	temperature = weather['main']['temp'] + (user.preference - 5)
     clouds = weather['clouds']['all']
-    #snow = weather['snow']['3h']
-    #rain = weather['rain']['3h']
+    condition = weather['weather']['main']
+
+    message.reply(text: condition)
+    message.reply(text: clouds)
 
     # reply to user and confirm the location currently being used for weather data
     message.reply(text: "Based on the current weather in #{location}, you should wear:")
@@ -131,6 +135,8 @@ Bot.on :postback do |postback|
 		# create new user
 		user = create_user(postback)
 		# reply to user with instructions for use
-  		postback.reply(text: "Welcome to Weather the Weather! We'll give you clothing recommendations based on the weather in your current location. Start by sending us your zipcode in the format: 'zipcode *your zipcode*' (ex: zipcode 12345). If you have any questions about usage, message 'help' for instructions.")
+  		postback.reply(text: "Welcome to Weather the Weather! We'll give you clothing recommendations based on the weather in your current location. Start by sending us your zipcode in the format: 'zipcode *your zipcode*' (ex: zipcode 12345).")
+  		postback.reply(text: "After updating your zipcode, you can type 'clothes' for clothing recommendations or update your personal preference so that we can give you better recommendations based on your typical warmth or coldness relative to others.")
+  		postback.reply(text: "If you want to update your personal preference or have any other questions about usage, message 'help' for instructions.")
   	end
 end
