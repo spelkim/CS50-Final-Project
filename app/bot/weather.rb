@@ -69,8 +69,8 @@ Bot.on :message do |message|
     clouds = weather['clouds']['all']
     condition = weather['weather']['main']
 
-    message.reply(text: condition)
-    message.reply(text: clouds)
+    message.reply(text: "#{condition}")
+    message.reply(text: "#{clouds}")
 
     # reply to user and confirm the location currently being used for weather data
     message.reply(text: "Based on the current weather in #{location}, you should wear:")
