@@ -67,7 +67,7 @@ Bot.on :message do |message|
 	location = weather['name']
   	temperature = weather['main']['temp'] + (user.preference - 5)
     clouds = weather['clouds']['all']
-    condition = weather['weather']['main']
+    condition = weather['weather'[0]]['main']
 
     message.reply(text: "#{condition}")
     message.reply(text: "#{clouds}")
