@@ -16,22 +16,16 @@ Bot.on :message do |message|
 
   # if bot receives a message with text
   case message.text
-  # if message includes the words "get started"
-  when /get started/i
-  	# create new user
-  	user = create_user(message)
-  	# reply to user with instructions for use
-  	message.reply(text: "Welcome to Weather the Weather! We'll give you clothing recommendations based on the weather in your current location. Start by sending us your zipcode in the format: 'zipcode *your zipcode*' (ex: zipcode 12345). If you have any questions about usage, message 'help' for instructions.")
-  # if message includes the word "hello"  	
+  # when message includes the given word, in this case "hello"  	
   when /hello/i
   	message.reply(text: 'Hello, human!')
-  # if message includes the word "help"
+  # provide user with usage instructions
   when /help/i
   	# reply to user with instructions for use
   	message.reply(text: "To request clothing recommendation based on current weather in your location: 'clothes' (ex: clothes) (make sure you set your zipcode first)")
   	message.reply(text: "To update zipcode: 'zipcode *your zipcode*' (ex: zipcode 12345).")
   	message.reply(text: "To update preference: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 means you're usually average temperature, and 9 means you're usually very warm relative to other people (ex: preference 6).")
-  # if message includes the word "zipcode"
+  # update zipcode
   when /zipcode/i
   	# split message into individual words
   	zipcode = message.text.split
@@ -44,7 +38,7 @@ Bot.on :message do |message|
   	else
   		message.reply(text: "Sorry we didn't get your zipcode. Try typing: 'zipcode *your zipcode*' (ex: zipcode 12345).")
   	end
-  # if message includes the word "preference"
+  # update preference
   when /preference/i
     preference = message.text.split
     # check if message is in proper format with a single digit following the word "preference"
@@ -56,7 +50,7 @@ Bot.on :message do |message|
     else
       message.reply(text: "Sorry we didn't get your preference. Try typing: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 is neutral, and 9 means you're usually very warm (ex: preference 6).")
     end
-  # if message includes the word "clothes"
+  # clothing recommendation
   when /clothes/i
   	# access weather API
   	weather = get_weather(message)
@@ -68,9 +62,6 @@ Bot.on :message do |message|
   	temperature = weather['main']['temp'] + (user.preference - 5)
     clouds = weather['clouds']['all']
     condition = weather['weather'][0]['main']
-
-    message.reply(text: "#{condition}")
-    message.reply(text: "#{clouds}")
 
     # reply to user and confirm the location currently being used for weather data
     message.reply(text: "Based on the current weather in #{location}, you should wear:")
@@ -88,11 +79,11 @@ Bot.on :message do |message|
     	message.reply(text: "Hoodie with Shirt")
     end
 
-    if temperature < 281 # or snow > 0
+    if temperature < 281
     	message.reply(text: "Coat")
     end
 
-    if temperature < 278 # or snow > 0
+    if temperature < 278
     	message.reply(text: "Gloves or Mittens")
     end
 
@@ -108,15 +99,15 @@ Bot.on :message do |message|
     	message.reply(text: "Shoes like Sneakers")
     end
 
-    if temperature <= 278 # or condition == "Snow"
+    if temperature <= 278 or condition == "Snow"
     	message.reply(text: "Winter Boots")
     end 
 
     if temperature >= 294 and clouds < 10
-    	message.reply(text: "Hat and Sunglasses")
+    	message.reply(text: "Sunglasses and maybe a Hat")
     end
 
-    if condition == "Rain"
+    if condition == "Rain" or condition == "Drizzle" or condition == "Thunderstorm"
     	message.reply(text: "A Raincoat, Rainboots, and maybe an Umbrella")
     end
 
@@ -130,7 +121,7 @@ end
 Bot.on :postback do |postback|
 	# if bot receives postback with payload
 	case postback.payload
-	# if postback is from the get started button
+	# when user clicks get started button
 	when /NEW_USER/i
 		# create new user
 		user = create_user(postback)
