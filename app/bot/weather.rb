@@ -66,9 +66,10 @@ Bot.on :message do |message|
     condition = weather['weather'][0]['main']
     # convert temperature from kelvin to farenheit for user to view
     farenheit = (9/5) * (temperature - 273.15) + 32
+    rounded = farenheit.round
 
     # tell user current weather at given location
-    message.reply(text: "The weather in #{location} is currently #{farenheit} degrees and #{condition}")
+    message.reply(text: "The weather in #{location} is currently #{rounded} degrees and #{condition}")
 
   # clothing recommendation
   when /clothes/i
