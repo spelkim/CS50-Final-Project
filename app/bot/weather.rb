@@ -94,20 +94,21 @@ Bot.on :message do |message|
     	message.reply(text: "Long Pants")
     end
 
-    if temperature > 278 and temperature < 294 and (condition != "Rain" and condition != "Drizzle" and condition != "Thunderstorm")
+    if temperature < 294 and (condition != "Rain" and condition != "Drizzle" and condition != "Thunderstorm")
     	message.reply(text: "Closed-toed Shoes (such as sneakers)")
     end
 
     if temperature >= 294 and (condition != "Rain" and condition != "Drizzle" and condition != "Thunderstorm")
-    	message.reply(text: "Sandals")
+    	message.reply(text: "Sandals or Flip-Flops")
     end
 
-    if temperature <= 278 or condition == "Snow"
+    if condition == "Snow"
     	message.reply(text: "Winter Boots")
     end
 
     if (condition == "Rain" or condition == "Drizzle" or condition == "Thunderstorm") and temperature > 278
     	message.reply(text: "Rainboots")
+    end
 
     if condition == "Rain" or condition == "Drizzle" or condition == "Thunderstorm"
     	message.reply(text: "A Raincoat and maybe an Umbrella")
