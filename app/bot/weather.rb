@@ -11,14 +11,14 @@ Bot.on :message do |message|
   # if bot receives a message with text
   case message.text
   
-  # when message includes the given word, in this case "hello"  	
+  # when message includes the given words, in this case "hello" or "hi" 	
   when /hello/i, /hi/i
   	message.reply(text: 'Hello, human!')
   
   # provide user with usage instructions
   when /help/i
   	# reply to user with instructions for use
-  	message.reply(text: "To request clothing recommendation based on current weather in your location: 'clothes' (ex: clothes)")
+  	message.reply(text: "To request clothing recommendation based on current weather in your location: 'clothes' or 'wear' (ex: clothes) (ex: what should I wear today?)")
   	message.reply(text: "To get weather for current location: 'weather' (ex: weather)")
   	message.reply(text: "To update zipcode: 'zipcode *your zipcode*' (ex: zipcode 12345).")
   	message.reply(text: "To update preference: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 means you're usually average temperature, and 9 means you're usually very warm relative to other people (ex: preference 6).")
@@ -66,7 +66,7 @@ Bot.on :message do |message|
     message.reply(text: "The weather in #{location} is currently #{rounded} degrees and #{condition}")
 
   # clothing recommendation
-  when /clothes/i
+  when /clothes/i, /wear/i
   	# access weather API
   	weather = get_weather(message)
   	# give recommendation based on current user
