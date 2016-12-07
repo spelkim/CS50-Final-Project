@@ -6,8 +6,8 @@ def create_user(message)
 	 	User.find_by(facebook_id: user_id).destroy
 	end
 
-	# create new user with given facebook ID and default preference 4
-	user = User.create(facebook_id: user_id, preference: "4")
+	# create new user with given facebook ID, default zipcode for Washington, D.C., and default preference 4
+	user = User.create(facebook_id: user_id, zipcode: "20001", preference: "4")
 end
 
 # updates zipcode
