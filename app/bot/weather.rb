@@ -60,7 +60,6 @@ Bot.on :message do |message|
 	# get location, temperature, clouds, and condition information
 	location = weather['name']
   	temperature = weather['main']['temp'] + (user.preference - 5)
-    clouds = weather['clouds']['all']
     condition = weather['weather'][0]['main']
 
     # reply to user and confirm the location currently being used for weather data
@@ -68,19 +67,19 @@ Bot.on :message do |message|
 
     # given thresholds for conditions, make clothing recommendations
   	if temperature >= 294
-    	message.reply(text: "T-Shirt")
+    	message.reply(text: "A T-Shirt")
     end 
 
     if temperature >= 287 and temperature < 294
-    	message.reply(text: "Long Sleeve Shirt")
+    	message.reply(text: "A Long Sleeve Shirt")
     end
 
     if temperature >= 281 and temperature < 287
-    	message.reply(text: "Hoodie with Shirt")
+    	message.reply(text: "A Hoodie with Shirt")
     end
 
     if temperature < 281
-    	message.reply(text: "Coat")
+    	message.reply(text: "A Coat or Jacket")
     end
 
     if temperature < 278
@@ -95,20 +94,23 @@ Bot.on :message do |message|
     	message.reply(text: "Long Pants")
     end
 
-    if temperature > 278
-    	message.reply(text: "Shoes like Sneakers")
+    if temperature > 278 and temperature < 294 and (condition != "Rain" and condition != "Drizzle" and condition != "Thunderstorm")
+    	message.reply(text: "Closed-toed Shoes (such as sneakers)")
+    end
+
+    if temperature >= 294 and (condition != "Rain" and condition != "Drizzle" and condition != "Thunderstorm")
+    	message.reply(text: "Sandals")
     end
 
     if temperature <= 278 or condition == "Snow"
     	message.reply(text: "Winter Boots")
-    end 
-
-    if temperature >= 294 and clouds < 10
-    	message.reply(text: "Sunglasses and maybe a Hat")
     end
 
+    if (condition == "Rain" or condition == "Drizzle" or condition == "Thunderstorm") and temperature > 278
+    	message.reply(text: "Rainboots")
+
     if condition == "Rain" or condition == "Drizzle" or condition == "Thunderstorm"
-    	message.reply(text: "A Raincoat, Rainboots, and maybe an Umbrella")
+    	message.reply(text: "A Raincoat and maybe an Umbrella")
     end
 
   # if user does not provide valid input
