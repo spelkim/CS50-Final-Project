@@ -12,7 +12,7 @@ Bot.on :message do |message|
   case message.text
   
   # when message includes the given word, in this case "hello"  	
-  when /hello/i or /hi/i
+  when /hello/i
   	message.reply(text: 'Hello, human!')
   
   # provide user with usage instructions
