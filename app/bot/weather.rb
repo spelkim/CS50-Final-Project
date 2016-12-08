@@ -19,7 +19,7 @@ Bot.on :message do |message|
   when /help/i
   	# reply to user with instructions for use
   	message.reply(text: "To request clothing recommendation based on current weather in your location, type: 'clothes' or 'wear' (ex: clothes) (ex: what should I wear today?)")
-  	message.reply(text: "To get weather for current location, type: 'weather' (ex: weather)")
+  	message.reply(text: "To get weather for current location, type: 'weather' (ex: what's the weather?)")
   	message.reply(text: "To update zipcode, type: 'zipcode *your zipcode*' (ex: zipcode 12345).")
   	message.reply(text: "To update preference, type: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 means you're usually average temperature, and 9 means you're usually very warm relative to other people (ex: preference 6).")
   
@@ -145,7 +145,7 @@ Bot.on :postback do |postback|
 		user = create_user(postback)
 		# reply to user with instructions for use
   		postback.reply(text: "Welcome to Weather the Weather! We'll give you clothing recommendations based on the weather in your current location. Start by sending us your zipcode in the format: 'zipcode *your zipcode*' (ex: zipcode 12345).")
-  		postback.reply(text: "After updating your zipcode, you can type 'clothes' for clothing recommendations, 'weather' for current weather, or update your personal preference so that we can give you better recommendations based on your typical warmth or coldness relative to others.")
+  		postback.reply(text: "After updating your zipcode, you can type 'clothes' or 'wear' for clothing recommendations, 'weather' for current weather, or update your personal preference so that we can give you better recommendations based on your typical warmth or coldness relative to others.")
   		postback.reply(text: "For instructions on updating your personal preference or using any other part of the bot, message 'help' for usage instructions.")
   	end
 end
