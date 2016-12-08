@@ -1,0 +1,66 @@
+	We implemented our project using Ruby on Rails, the Heroku server, and the Facebook Messenger
+platform. Ruby on Rails is a server-side web application framework that uses the language Ruby, 
+and we chose to use it as opposed to a language such as python due in large part to the gems, 
+specifically the Facebook Messenger gem, that makes using the Messenger platform comparatively easier. 
+
+	In order to store user data, such as their Facebook ID, ZIP codes, and personal preferences, we used
+a model, which is the default data structure supported by Rails. The model was created in the terminal, 
+which generated a model file for the User model. For long-term data storage, we used a SQLite database,
+and interactions with the database are accomplished using Active Record, which is the default library 
+on Rails for interacting with the database. Migrations are used to update the model file. Coupled 
+together, both of these features of Rails mean that the SQLite database used to store the data can be 
+altered using only Ruby, without the need for SQL commands. A migration file was created to run 
+migrations, and for our purposes, this was used when the user updated their information, such as ZIP 
+code or preference, or a new user was created. We needed to use a model with a SQLite database because
+we needed to have long-term storage of this information in order for the bot to be able to make 
+recommendations and provide information based on the user.
+
+	We used the Heroku server, which is a web application deployment model, for deployment and running
+our code on its servers. We chose Heroku because it supports Ruby, which is the language we used
+to write our program. 
+
+	We chose to use the Facebook Messenger platform because it is a simple and elegant way to get 
+clothing recommendations based on the weather. A web-based app would have been comparatively inefficient 
+as the user would have to go the website each time. However, the Facebook Messenger platform is 
+essentially as easy as texting. Also, Facebook Messenger is one of the most widely used instant 
+messaging platforms, making it a strong platform to use for developing our app. 
+
+	Within the bot, we ask for the user's ZIP code so that we can use their current location when 
+providing current weather and clothing recommendations, and we store this ZIP code in the User model. We 
+also ask for a personalized preference value from 0-9, so that the app's clothing recommendations can be 
+tailored specifically to them. For example, if they are usually cold, then they can set their preference 
+as a smaller number and their clothing recommendation will provide warmer options, and if they are 
+usually hot, then they can choose a higher number and the clothing recommendation will provide less warm 
+options. User preference values are also stored in the User model. 
+
+	When a user asks for the weather or a clothing recommendation, the bot queries the weather API that 
+we are using with the user's most recently stored ZIP code, and the weather API returns a JSON file with
+multiple weather parameters for the specific location associated with that ZIP code at the time of the 
+request. Using these parameters, we modify the temperature values based on the user's currently stored 
+preference to simulate a different temperature when we make our recommendation so that this 
+recommendation takes into account whether the user usually feels warm or cold. Our algorithm has 
+multiple articles of clothing, each of which is recommended if specific weather conditions exists, such 
+as if the temperature is within a defined range for the clothing or if it is raining or snowing. Based 
+on these predefined thresholds, the bot will respond with articles of clothing whose thresholds or 
+conditions are satisfied by the parameters returned in the JSON from the weather API. 
+
+	We designed our algorithm this way instead of splitting the temperatures into increments with each 
+increment assigned a particular set of clothing because it allows for easier addition of potential 
+future articles of clothing or alterations of the temperature thresholds for a specific article of 
+clothing. Thus, in the future, if we wanted to expand the clothing items that the bot can suggest, we 
+can easily add it into our algorithm since each article of clothing has its own set of parameters. 
+Otherwise, we would have to manually go through each increment and insert or remove the article of 
+clothing for each increment. Also, assigning each article of clothing specific conditions allows for 
+easier incorporation of conditions that are not temperature based, such as rain, which should result in 
+the recommendation of a raincoat or umbrella.
+
+	We also designed our program with personalized recommendations in mind since not everyone in the 
+population feels comfortable in the exact same clothing at a given temperature. Thus, users can set 
+their preference, and if they felt too hot or too cold wearing the clothes that were recommended by the 
+bot, they can adjust their preference so the algorithm produces better, more personalized outputs. Our 
+preference ranges for clothing are +/- 10 degree celsius from the set average, which gives a total range 
+of roughly 20 degrees for each article of clothing, which should be adequate to encompass the 
+significant majority of the population, based on the extremes in preferences. Our range is intentionally 
+large so users can test the recommendation given by the algorithm and alter it as they see fit. This is 
+preferable to having a narrow range for preferences, as a narrower range would not giving users as much 
+flexibilty in their preferences. 
