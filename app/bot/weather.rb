@@ -38,7 +38,7 @@ Bot.on :message do |message|
  #  	end
 
   when message.text.length == 1 and message.text[0].length == 5 and is_number(message.text[0])
-	user_zipcode = zipcode[1]
+	user_zipcode = message.text[0]
 	# store zipcode in user model
 	updated_zipcode = update_zipcode(message, user_zipcode)
 
