@@ -1,3 +1,4 @@
+# migration file for User model
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|

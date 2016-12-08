@@ -74,7 +74,7 @@ Bot.on :message do |message|
 	user = User.find_by(facebook_id: user_id)
 	# get location, temperature, and condition information
 	location = weather['name']
-  	temperature = weather['main']['temp'] + (user.preference - 5)
+  	temperature = weather['main']['temp'] + ((2 * user.preference) - 9)
     condition = weather['weather'][0]['main']
 
     # reply to user and confirm the location currently being used for weather data

@@ -1,0 +1,38 @@
+	For our project, we designed a Facebook Messenger Bot that gives the user clothing recommendations
+based on the weather in their current location. Facebook Messenger Bots operate through the Facebook 
+Messenger platform, with users sending messages to the bot and the bot replying based on the content
+of those messages. Users can access the bot by searching for its associated Facebook page on Facebook or Messenger. The page and the bot as it appears in Messenger are called "Weather the Weather" and its @username is @cs50weather, and either of these terms can be used to search for and find the app page to begin a conversation with the bot. Alternatively, this Facebook link will bring the user to the app page
+where they can click "Message" to start a conversation with the bot:
+
+	https://www.facebook.com/cs50weather/
+
+	To use our bot, the user begins by clicking the "Get Started" button that appears
+when they open the chat with the bot for the first time, and the bot then sends the user a greeting
+and some instructions for how to proceed and use the bot. After that, the user should first set their
+current ZIP code so that the bot can provide them with information and suggestions based on their
+current location. The user can change their ZIP code at any time to match where they currently are. 
+After the ZIP code is set, the user can ask for current weather information at their location, 
+recommendations for what to wear based on the current weather, or adjust their personal temperature
+preferences, which allows the bot to give more personalized clothing recommendations based on whether
+the user is usually warm or cold relative to other people. At any time, the user can access the usage
+instructions for these features within the bot by messaging "help" to the bot, and the majority of 
+the instructions for these features are also provided within the welcome message when the bot is first opened. Briefly, the usage instructions as provided in help for the bot are:
+
+	To request clothing recommendation based on current weather in your location: 'clothes' or 'wear' 
+	(ex: clothes) (ex: what should I wear today?)
+	To get weather for current location: 'weather' (ex: weather)
+	To update zipcode: 'zipcode *your zipcode*' (ex: zipcode 12345).
+	To update preference: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 
+	4 means you're usually average temperature, and 9 means you're usually very warm relative to other people (ex: preference 6).
+
+	Our app and bot are in development and are not yet available to the public, and therefore only
+certain Facebook users have access to the bot. Each of these users has to be individually approved
+to access and use the bot, so in order for the CS50 staff to test the bot, we have made a Facebook
+account that has been added as a tester account for our app, meaning that it can use and test the
+bot. The username and password are as follows:
+
+	Username: cs50weather@gmail.com
+	Password: @cs50weather
+
+	Please use the Facebook account above to test the bot, as personal accounts will not work due
+to the app still being in development and not yet released to the public. 
