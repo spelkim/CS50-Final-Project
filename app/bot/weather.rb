@@ -139,7 +139,7 @@ end
 Bot.on :postback do |postback|
 	# if bot receives postback with payload
 	case postback.payload
-	# when user clicks get started button
+	# when user clicks get started button, which returns payload "NEW_USER"
 	when /NEW_USER/i
 		# create new user
 		user = create_user(postback)

@@ -33,5 +33,5 @@ bot. The username and password are as follows:
 	Username: cs50weather@gmail.com
 	Password: @cs50weather
 
-	Please use the Facebook account above to test the bot, as personal accounts will not work due
-to the app still being in development and not yet released to the public. 
+	Please use the Facebook account above to test the bot, as personal accounts that have not been 
+specifically added as testers will not work due to the app still being in development and not yet released to the public. 
