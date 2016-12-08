@@ -23,19 +23,24 @@ Bot.on :message do |message|
   	message.reply(text: "To update zipcode: 'zipcode *your zipcode*' (ex: zipcode 12345).")
   	message.reply(text: "To update preference: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 means you're usually average temperature, and 9 means you're usually very warm relative to other people (ex: preference 6).")
   
-  # update zipcode
-  when /zipcode/i
-  	# split message into individual words
-  	zipcode = message.text.split
-  	# check if message is in proper format with a 5-digit string following the word "zipcode"
-  	if zipcode.length == 2 and zipcode[1].length == 5 and is_number(zipcode[1])
-		user_zipcode = zipcode[1]
-		# store zipcode in user model
-		updated_zipcode = update_zipcode(message, user_zipcode)
-	# if wrong format used
-  	else
-  		message.reply(text: "Sorry we didn't get your zipcode. Try typing: 'zipcode *your zipcode*' (ex: zipcode 12345).")
-  	end
+ #  # update zipcode
+ #  when /zipcode/i
+ #  	# split message into individual words
+ #  	zipcode = message.text.split
+ #  	# check if message is in proper format with a 5-digit string following the word "zipcode"
+ #  	if zipcode.length == 2 and zipcode[1].length == 5 and is_number(zipcode[1])
+	# 	user_zipcode = zipcode[1]
+	# 	# store zipcode in user model
+	# 	updated_zipcode = update_zipcode(message, user_zipcode)
+	# # if wrong format used
+ #  	else
+ #  		message.reply(text: "Sorry we didn't get your zipcode. Try typing: 'zipcode *your zipcode*' (ex: zipcode 12345).")
+ #  	end
+
+  when message.text.length == 1 and message.text[0].length == 5 and is_number(message.text[0])
+	user_zipcode = zipcode[1]
+	# store zipcode in user model
+	updated_zipcode = update_zipcode(message, user_zipcode)
 
   # update preference
   when /preference/i
