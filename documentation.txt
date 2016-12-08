@@ -18,12 +18,11 @@ the user is usually warm or cold relative to other people. At any time, the user
 instructions for these features within the bot by messaging "help" to the bot, and the majority of 
 the instructions for these features are also provided within the welcome message when the bot is first opened. Briefly, the usage instructions as provided in help for the bot are:
 
-	To request clothing recommendation based on current weather in your location: 'clothes' or 'wear' 
+	To request clothing recommendation based on current weather in your location, type: 'clothes' or 'wear' 
 	(ex: clothes) (ex: what should I wear today?)
-	To get weather for current location: 'weather' (ex: weather)
-	To update zipcode: 'zipcode *your zipcode*' (ex: zipcode 12345).
-	To update preference: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 
-	4 means you're usually average temperature, and 9 means you're usually very warm relative to other people (ex: preference 6).
+	To get weather for current location, type: 'weather' (ex: weather)
+	To update zipcode, type: 'zipcode *your zipcode*' (ex: zipcode 12345).
+	To update preference, type: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 means you're usually average temperature, and 9 means you're usually very warm relative to other people (ex: preference 6).
 
 	Our app and bot are in development and are not yet available to the public, and therefore only
 certain Facebook users have access to the bot. Each of these users has to be individually approved

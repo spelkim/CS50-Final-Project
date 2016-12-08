@@ -18,10 +18,10 @@ Bot.on :message do |message|
   # provide user with usage instructions
   when /help/i
   	# reply to user with instructions for use
-  	message.reply(text: "To request clothing recommendation based on current weather in your location: 'clothes' or 'wear' (ex: clothes) (ex: what should I wear today?)")
-  	message.reply(text: "To get weather for current location: 'weather' (ex: weather)")
-  	message.reply(text: "To update zipcode: 'zipcode *your zipcode*' (ex: zipcode 12345).")
-  	message.reply(text: "To update preference: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 means you're usually average temperature, and 9 means you're usually very warm relative to other people (ex: preference 6).")
+  	message.reply(text: "To request clothing recommendation based on current weather in your location, type: 'clothes' or 'wear' (ex: clothes) (ex: what should I wear today?)")
+  	message.reply(text: "To get weather for current location, type: 'weather' (ex: weather)")
+  	message.reply(text: "To update zipcode, type: 'zipcode *your zipcode*' (ex: zipcode 12345).")
+  	message.reply(text: "To update preference, type: 'preference *a number from 0 to 9*' where 0 means you're usually very cold, 4 means you're usually average temperature, and 9 means you're usually very warm relative to other people (ex: preference 6).")
   
   # update zipcode
   when /zipcode/i
